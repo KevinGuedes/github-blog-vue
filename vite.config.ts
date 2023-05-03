@@ -13,11 +13,9 @@ export default defineConfig({
     vue(),
     Icons({ compiler: 'vue3' }),
     AutoImport({
-      dts: true,
       imports: ['vue', 'vue-router']
     }),
     Components({
-      dts: true,
       dirs: './src',
       resolvers: [
         IconsResolver({
@@ -34,6 +32,11 @@ export default defineConfig({
   css: {
     postcss: {
       plugins: [autoprefixer({})]
+    },
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use "@/styles/_variables.scss" as *;`
+      }
     }
   },
   server: {

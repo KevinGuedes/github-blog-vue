@@ -11,7 +11,10 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AboutView: typeof import('./src/views/AboutView.vue')['default']
     App: typeof import('./src/App.vue')['default']
+    DefaultLayout: typeof import('./src/layout/DefaultLayout.vue')['default']
     HomeView: typeof import('./src/views/HomeView.vue')['default']
+    IconPhUploadSimple: typeof import('~icons/ph/upload-simple')['default']
+    PageHeader: typeof import('./src/components/PageHeader.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

@@ -1,11 +1,7 @@
-<script setup lang="ts">
-const x = ref(0)
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <header></header>
-  <HomeView />
-  <RouterView />
+  <DefaultLayout />
 </template>
 
 <style scoped lang="scss"></style>

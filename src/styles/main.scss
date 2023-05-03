@@ -1,0 +1,39 @@
+@use './_variables';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:focus {
+  outline: 0;
+  box-shadow: 0 0 0 1px $brand-blue;
+}
+
+body {
+  background: $background-color;
+  color: $text-color;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  overflow-y: overlay;
+}
+
+body,
+input,
+textarea,
+button {
+  font: 400 1rem 'Nunito', sans-serif;
+  line-height: 1.6;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  position: absolute;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: $label-color;
+}
