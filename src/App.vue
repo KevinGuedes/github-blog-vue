@@ -1,8 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const x = ref(0)
+</script>
 
 <template>
   <header></header>
-
+  <HomeView />
   <RouterView />
 </template>
 
