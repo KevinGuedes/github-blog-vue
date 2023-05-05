@@ -1,7 +1,5 @@
 <template>
-  <section>
-    <ProfileCard />
-  </section>
+  <ProfileCard />
 </template>
 
 <script setup lang="ts"></script>

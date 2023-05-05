@@ -1,7 +1,6 @@
 import { gitHubApi } from '@/lib/gitHubApi'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-
 const user: string = import.meta.env.VITE_USER
 
 export interface ProfileData {
@@ -16,17 +15,24 @@ export interface ProfileData {
 
 export const useProfileStore = defineStore('profile', () => {
   const profile = ref<ProfileData | null>(null)
-  const isLoadingProfileData = ref(true)
 
-  async function fetchProfileData() {
-    const hasProfileData = Boolean(profile.value)
-    if (hasProfileData) return
+  async function fetchProfileData(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      try {
+        throw new Error('bad thinds')
 
-    isLoadingProfileData.value = true
-    const profileResponse = await gitHubApi.get<ProfileData>(`users/${user}`)
-    profile.value = profileResponse.data
-    isLoadingProfileData.value = false
+        const hasProfileData = Boolean(profile.value)
+        if (hasProfileData) return
+
+        setTimeout(async () => {
+          const profileResponse = await gitHubApi.get<ProfileData>(`users/${user}`)
+          profile.value = profileResponse.data
+        }, 3000)
+      } catch (err) {
+        reject(err)
+      }
+    })
   }
 
-  return { profile, isLoadingProfileData, fetchProfileData }
+  return { profile, fetchProfileData }
 })

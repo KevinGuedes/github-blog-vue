@@ -24,6 +24,7 @@ declare module '@vue/runtime-core' {
     LoadSpinner: typeof import('./src/components/LoadSpinner.vue')['default']
     NoResults: typeof import('./src/views/HomeView/components/NoResults.vue')['default']
     PageHeader: typeof import('./src/components/PageHeader.vue')['default']
+    PhClipboardLight: typeof import('~icons/ph/clipboard-light')['default']
     PostCard: typeof import('./src/views/HomeView/components/PostCard.vue')['default']
     PostData: typeof import('./src/views/PostDetailsView/components/PostData.vue')['default']
     PostDetailsView: typeof import('./src/views/PostDetailsView/PostDetailsView.vue')['default']

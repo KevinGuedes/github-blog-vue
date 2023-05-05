@@ -1,40 +1,32 @@
 <template>
   <section>
-    <template v-if="isLoadingProfileData">
-      <div class="spinner-container">
-        <div class="spinner"></div>
-        <span>Loading profile data...</span>
-      </div>
-    </template>
-    <template v-else>
-      <img :src="profile?.avatar_url" :alt="profileImageAlt" />
+    <img :src="profile?.avatar_url" :alt="profileImageAlt" />
+    <div>
       <div>
-        <div>
-          <header>
-            <h1>{{ profile?.name }}</h1>
-            <a :href="profile?.html_url" target="_blank">
-              GitHub <icon-fa6-solid:arrow-up-right-from-square />
-            </a>
-          </header>
-          <p>{{ profile?.bio }}</p>
-        </div>
-
-        <div class="user-metrics">
-          <span>
-            <icon-fa6-brands:github />
-            {{ profile?.login }}
-          </span>
-          <span>
-            <icon-fa6-solid:building />
-            {{ profile?.company }}
-          </span>
-          <span>
-            <icon-fa6-solid:user-group />
-            {{ followersMessage }}
-          </span>
-        </div>
+        <header>
+          <h1>{{ profile?.name }}</h1>
+          <a :href="profile?.html_url" target="_blank">
+            GitHub <icon-fa6-solid:arrow-up-right-from-square />
+          </a>
+        </header>
+        <p>{{ profile?.bio }}</p>
       </div>
-    </template>
+
+      <div class="user-metrics">
+        <span>
+          <icon-fa6-brands:github />
+          {{ profile?.login }}
+        </span>
+        <span>
+          <icon-fa6-solid:building />
+          {{ profile?.company }}
+        </span>
+        <span>
+          <icon-fa6-solid:user-group />
+          {{ followersMessage }}
+        </span>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -42,7 +34,7 @@
 import { useProfileStore } from '@/stores/profile'
 
 const profileStore = useProfileStore()
-const { profile, isLoadingProfileData } = storeToRefs(profileStore)
+const { profile } = storeToRefs(profileStore)
 const { fetchProfileData } = profileStore
 
 const profileImageAlt = computed(() => {
@@ -53,7 +45,7 @@ const followersMessage = computed(() => {
   return profile.value?.followers === 1 ? '1 Follower' : `${profile.value?.followers} Followers`
 })
 
-fetchProfileData()
+await fetchProfileData()
 </script>
 
 <style scoped lang="scss">
