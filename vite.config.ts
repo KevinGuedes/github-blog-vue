@@ -13,7 +13,7 @@ export default defineConfig({
     vue(),
     Icons({ compiler: 'vue3' }),
     AutoImport({
-      imports: ['vue', 'vue-router']
+      imports: ['vue', 'vue-router', 'pinia']
     }),
     Components({
       dirs: './src',

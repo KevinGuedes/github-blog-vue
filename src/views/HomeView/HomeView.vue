@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <h1>Home</h1>
-  </div>
+  <section>
+    <ProfileCard />
+  </section>
 </template>
 
 <script setup lang="ts"></script>
