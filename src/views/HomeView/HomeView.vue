@@ -1,5 +1,8 @@
 <template>
-  <ProfileCard />
+  <div>
+    <ProfileCard />
+    <PostList />
+  </div>
 </template>
 
 <script setup lang="ts"></script>

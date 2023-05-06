@@ -1,15 +1,28 @@
 <template>
   <li>
     <header>
-      <h1>{post.title}</h1>
-      <time title="{formattedCreationDate}" dateTime="{post.created_at}">
-        {creationDateRelativeToNow}
+      <h1>{{ post.title }}</h1>
+      <time :title="formattedCreationDate" dateTime="{post.created_at}">
+        {{ creationDateRelativeToNow }}
       </time>
     </header>
   </li>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type { Post } from '@/stores/posts'
+import { format, formatDistanceToNow } from 'date-fns'
+
+const props = defineProps<{
+  post: Post
+}>()
+
+const createdAt = new Date(props.post.created_at)
+const formattedCreationDate = format(createdAt, "iiii, d MMMM yyyy 'at' hh:mm aa")
+const creationDateRelativeToNow = formatDistanceToNow(createdAt, {
+  addSuffix: true
+})
+</script>
 
 <style scoped lang="scss">
 li {

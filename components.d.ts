@@ -30,6 +30,7 @@ declare module '@vue/runtime-core' {
     PostDetailsView: typeof import('./src/views/PostDetailsView/PostDetailsView.vue')['default']
     PostList: typeof import('./src/views/HomeView/components/PostList.vue')['default']
     PostMarkdownViewer: typeof import('./src/components/PostMarkdownViewer.vue')['default']
+    PostViewer: typeof import('./src/components/PostViewer.vue')['default']
     Profile: typeof import('./src/views/HomeView/components/Profile.vue')['default']
     ProfileCard: typeof import('./src/views/HomeView/components/ProfileCard.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

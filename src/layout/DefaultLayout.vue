@@ -1,7 +1,10 @@
 <template>
-  <div>
-    <PageHeader />
-    <main>
+  <PageHeader />
+  <main>
+    <div v-if="errorState.isError">
+      <p>{{ errorState.errorMessage }}</p>
+    </div>
+    <div v-else>
       <RouterView v-slot="{ Component }">
         <template v-if="Component">
           <Transition name="fade" mode="out-in" appear>
@@ -13,7 +16,7 @@
 
                 <template #fallback>
                   <div class="fallback-container">
-                    <LoadSpinner loading-message="Loading Profile data..." />
+                    <LoadSpinner loading-message="Loading GitHub data..." />
                   </div>
                 </template>
               </Suspense>
@@ -21,12 +24,19 @@
           </Transition>
         </template>
       </RouterView>
-    </main>
-  </div>
+    </div>
+  </main>
 </template>
 
 <script setup lang="ts">
+const errorState = ref({
+  isError: false,
+  errorMessage: ''
+})
+
 onErrorCaptured((err: Error) => {
+  errorState.value.isError = true
+  errorState.value.errorMessage = err.message
   return false
 })
 </script>

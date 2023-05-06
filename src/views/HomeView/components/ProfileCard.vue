@@ -36,6 +36,7 @@ import { useProfileStore } from '@/stores/profile'
 const profileStore = useProfileStore()
 const { profile } = storeToRefs(profileStore)
 const { fetchProfileData } = profileStore
+await fetchProfileData()
 
 const profileImageAlt = computed(() => {
   return `${profile.value?.name} profile image`
@@ -44,8 +45,6 @@ const profileImageAlt = computed(() => {
 const followersMessage = computed(() => {
   return profile.value?.followers === 1 ? '1 Follower' : `${profile.value?.followers} Followers`
 })
-
-await fetchProfileData()
 </script>
 
 <style scoped lang="scss">
