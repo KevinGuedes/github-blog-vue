@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Post } from '@/stores/posts'
+import type { Post } from '@/models/post.model'
 import { format, formatDistanceToNow } from 'date-fns'
 
 const props = defineProps<{
