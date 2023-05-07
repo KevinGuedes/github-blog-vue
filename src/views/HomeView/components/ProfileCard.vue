@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <DataCard class="profile-card-container">
     <img :src="profile?.avatar_url" :alt="profileImageAlt" />
     <div>
       <div>
@@ -27,7 +27,7 @@
         </span>
       </div>
     </div>
-  </section>
+  </DataCard>
 </template>
 
 <script setup lang="ts">
@@ -48,13 +48,7 @@ const followersMessage = computed(() => {
 </script>
 
 <style scoped lang="scss">
-section {
-  padding: 2rem 2.5rem;
-  min-height: 13.25rem;
-  background: $profile-color;
-  border-radius: 10px;
-  box-shadow: 0px 2px 28px rgba(0, 0, 0, 0.2);
-
+.profile-card-container {
   display: flex;
   justify-content: center;
   flex: 1;

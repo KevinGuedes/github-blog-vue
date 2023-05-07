@@ -7,7 +7,7 @@
     <div v-else>
       <RouterView v-slot="{ Component }">
         <template v-if="Component">
-          <Transition name="fade" mode="out-in" appear>
+          <Transition name="fade" mode="out-in">
             <KeepAlive>
               <Suspense>
                 <Transition name="fade" mode="out-in" appear>
@@ -51,13 +51,9 @@ div {
   }
 }
 
-.fallback-container {
-  margin-top: 10rem;
-}
-
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.25s ease;
+  transition: opacity 0.3s ease;
 }
 
 .fade-enter-from,

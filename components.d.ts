@@ -11,6 +11,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AboutView: typeof import('./src/views/AboutView.vue')['default']
     App: typeof import('./src/App.vue')['default']
+    DataCard: typeof import('./src/components/DataCard.vue')['default']
     DefaultLayout: typeof import('./src/layout/DefaultLayout.vue')['default']
     HomeView: typeof import('./src/views/HomeView/HomeView.vue')['default']
     'IconFa6Brands:github': typeof import('~icons/fa6-brands/github')['default']

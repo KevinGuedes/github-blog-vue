@@ -1,6 +1,6 @@
 <template>
   <ul v-if="hasResults">
-    <PostCard v-for="post in posts" :key="post.number" :post="post" />
+    <PostCard v-for="post in posts" :key="post.number" :post="post" v-motion-fade-visible-once />
   </ul>
   <NoResults v-else />
 </template>

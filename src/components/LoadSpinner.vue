@@ -1,8 +1,8 @@
 <template>
-  <div class="spinner-container">
+  <DataCard class="spinner-container">
     <div class="spinner"></div>
     <span>{{ loadingMessage }}</span>
-  </div>
+  </DataCard>
 </template>
 
 <script setup lang="ts">
