@@ -31,7 +31,7 @@
 </template>
 
 <script setup lang="ts">
-import { useProfileStore } from '@/stores/profile'
+import { useProfileStore } from '@/stores/profile.store'
 
 const profileStore = useProfileStore()
 const { profile } = storeToRefs(profileStore)

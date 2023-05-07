@@ -6,10 +6,10 @@
 </template>
 
 <script setup lang="ts">
-import { usePostsStore } from '@/stores/posts'
+import { usePostsStore } from '@/stores/posts.store'
 
 const postsStore = usePostsStore()
-await postsStore.fetchPostsByQuery()
+await postsStore.getPostsByQuery()
 const { posts } = storeToRefs(postsStore)
 
 const hasResults = computed(() => posts.value.length > 0)
