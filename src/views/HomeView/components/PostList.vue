@@ -1,6 +1,6 @@
 <template>
   <div v-if="isLoadingPosts">
-    <LoadSpinner loading-message="Loading posts..." />
+    <LoadSpinner loading-message="Loading posts..." :show-background="false" />
   </div>
   <NoResults v-else-if="isEmptyResult" />
   <ul v-else>

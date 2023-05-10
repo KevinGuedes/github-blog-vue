@@ -1,13 +1,18 @@
 <template>
-  <DataCard class="spinner-container">
+  <DataCard class="spinner-container" v-if="showBackground">
     <div class="spinner"></div>
     <span>{{ loadingMessage }}</span>
   </DataCard>
+  <div class="spinner-container" v-else>
+    <div class="spinner"></div>
+    <span>{{ loadingMessage }}</span>
+  </div>
 </template>
 
 <script setup lang="ts">
 defineProps<{
   loadingMessage: string
+  showBackground: boolean
 }>()
 </script>
 

@@ -16,7 +16,7 @@
 
                 <template #fallback>
                   <div class="fallback-container">
-                    <LoadSpinner loading-message="Loading GitHub data..." />
+                    <LoadSpinner loading-message="Loading GitHub data..." :show-background="true" />
                   </div>
                 </template>
               </Suspense>
