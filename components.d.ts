@@ -9,7 +9,6 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    AboutView: typeof import('./src/views/AboutView.vue')['default']
     App: typeof import('./src/App.vue')['default']
     DataCard: typeof import('./src/components/DataCard.vue')['default']
     DefaultLayout: typeof import('./src/layout/DefaultLayout.vue')['default']
@@ -18,24 +17,20 @@ declare module '@vue/runtime-core' {
     'IconFa6Solid:arrowUpRightFromSquare': typeof import('~icons/fa6-solid/arrow-up-right-from-square')['default']
     'IconFa6Solid:building': typeof import('~icons/fa6-solid/building')['default']
     'IconFa6Solid:userGroup': typeof import('~icons/fa6-solid/user-group')['default']
-    IconPhClipboard: typeof import('~icons/ph/clipboard')['default']
     IconPhClipboardLight: typeof import('~icons/ph/clipboard-light')['default']
-    IconPhClipboardThin: typeof import('~icons/ph/clipboard-thin')['default']
-    IconPhUploadSimple: typeof import('~icons/ph/upload-simple')['default']
     LoadSpinner: typeof import('./src/components/LoadSpinner.vue')['default']
     NoResults: typeof import('./src/views/HomeView/components/NoResults.vue')['default']
     PageHeader: typeof import('./src/components/PageHeader.vue')['default']
-    PhClipboardLight: typeof import('~icons/ph/clipboard-light')['default']
     PostCard: typeof import('./src/views/HomeView/components/PostCard.vue')['default']
     PostData: typeof import('./src/views/PostDetailsView/components/PostData.vue')['default']
     PostDetailsView: typeof import('./src/views/PostDetailsView/PostDetailsView.vue')['default']
     PostList: typeof import('./src/views/HomeView/components/PostList.vue')['default']
     PostMarkdownViewer: typeof import('./src/components/PostMarkdownViewer.vue')['default']
     PostViewer: typeof import('./src/components/PostViewer.vue')['default']
-    Profile: typeof import('./src/views/HomeView/components/Profile.vue')['default']
     ProfileCard: typeof import('./src/views/HomeView/components/ProfileCard.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    Spinner: typeof import('./src/components/Spinner.vue')['default']
+    SearchForm: typeof import('./src/views/HomeView/components/SearchForm.vue')['default']
+    SearchFrom: typeof import('./src/views/HomeView/components/SearchFrom.vue')['default']
   }
 }

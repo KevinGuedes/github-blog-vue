@@ -8,9 +8,8 @@ export const useProfileStore = defineStore('profile', () => {
     const hasProfileData = Boolean(profile.value)
     if (hasProfileData) return
 
-    const profileResponse = await GitHubApi.getProfile()
-    profile.value = profileResponse.data
+    profile.value = await GitHubApi.getProfile()
   }
 
-  return { profile, fetchProfileData }
+  return { profile: readonly(profile), fetchProfileData }
 })

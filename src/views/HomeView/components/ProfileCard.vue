@@ -1,5 +1,5 @@
 <template>
-  <DataCard class="profile-card-container">
+  <DataCard class="profile-card-container" :show-background="true">
     <img :src="profile?.avatar_url" :alt="profileImageAlt" />
     <div>
       <div>
@@ -51,7 +51,6 @@ const followersMessage = computed(() => {
 .profile-card-container {
   display: flex;
   justify-content: center;
-  flex: 1;
   gap: 2rem;
 
   img {

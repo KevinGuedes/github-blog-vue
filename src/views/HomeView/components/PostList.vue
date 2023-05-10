@@ -1,8 +1,12 @@
 <template>
-  <ul v-if="hasResults">
-    <PostCard v-for="post in posts" :key="post.number" :post="post" v-motion-fade-visible-once />
+  <div v-if="isLoadingPosts">
+    <LoadSpinner loading-message="Loading posts..." />
+  </div>
+  <NoResults v-else-if="isEmptyResult" />
+  <ul v-else>
+    <!-- <PostCard v-for="post in posts" :key="post.number" :post="post" v-motion-fade-visible-once /> -->
+    <PostCard v-for="post in posts" :key="post.number" :post="post" />
   </ul>
-  <NoResults v-else />
 </template>
 
 <script setup lang="ts">
@@ -10,9 +14,7 @@ import { usePostsStore } from '@/stores/posts.store'
 
 const postsStore = usePostsStore()
 await postsStore.getPostsByQuery()
-const { posts } = storeToRefs(postsStore)
-
-const hasResults = computed(() => posts.value.length > 0)
+const { posts, isEmptyResult, isLoadingPosts } = storeToRefs(postsStore)
 </script>
 
 <style scoped lang="scss">

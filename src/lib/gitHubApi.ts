@@ -15,7 +15,7 @@ const gitHubApi = axios.create({
 
 export class GitHubApi {
   static async getPostsByQuery(query: string = '') {
-    return gitHubApi.get<{ items: Post[] }>('search/issues', {
+    const response = await gitHubApi.get<{ items: Post[] }>('search/issues', {
       headers: {
         accept: 'application/vnd.github+json'
       },
@@ -24,9 +24,12 @@ export class GitHubApi {
         sort: 'updated'
       }
     })
+
+    return response.data.items
   }
 
-  static async getProfile() {
-    return gitHubApi.get<ProfileData>(`users/${user}`)
+  static async getProfile(): Promise<ProfileData> {
+    const response = await gitHubApi.get<ProfileData>(`users/${user}`)
+    return response.data
   }
 }
