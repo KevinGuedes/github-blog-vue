@@ -14,18 +14,20 @@ const gitHubApi = axios.create({
 })
 
 export class GitHubApi {
-  static async getPostsByQuery(query: string = '') {
-    const response = await gitHubApi.get<{ items: Post[] }>('search/issues', {
+  static async getPosts(query: string = '', page: number = 1, postsPerPage: number = 4) {
+    const response = await gitHubApi.get<{ items: Post[]; total_count: number }>('search/issues', {
       headers: {
         accept: 'application/vnd.github+json'
       },
       params: {
         q: `repo:${user}/${repo} is:issue ${query}`,
-        sort: 'updated'
+        sort: 'updated',
+        per_page: postsPerPage,
+        page
       }
     })
 
-    return response.data.items
+    return { posts: response.data.items, numebrOfPostsFound: response.data.total_count }
   }
 
   static async getProfile(): Promise<ProfileData> {

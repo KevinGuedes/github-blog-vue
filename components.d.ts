@@ -13,6 +13,8 @@ declare module '@vue/runtime-core' {
     DataCard: typeof import('./src/components/DataCard.vue')['default']
     DefaultLayout: typeof import('./src/layout/DefaultLayout.vue')['default']
     HomeView: typeof import('./src/views/HomeView/HomeView.vue')['default']
+    'IconEp:arrowLeftBold': typeof import('~icons/ep/arrow-left-bold')['default']
+    'IconEp:arrowRightBold': typeof import('~icons/ep/arrow-right-bold')['default']
     'IconFa6Brands:github': typeof import('~icons/fa6-brands/github')['default']
     'IconFa6Solid:arrowUpRightFromSquare': typeof import('~icons/fa6-solid/arrow-up-right-from-square')['default']
     'IconFa6Solid:building': typeof import('~icons/fa6-solid/building')['default']

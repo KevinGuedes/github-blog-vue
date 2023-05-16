@@ -3,7 +3,7 @@
     <header>
       <h2>Posts</h2>
       <span v-if="hasOnlyOnePost">1 Post</span>
-      <span v-else>{{ postsCount }} Posts</span>
+      <span v-else>{{ numebrOfPostsFound }} Posts</span>
     </header>
 
     <form>
@@ -16,12 +16,12 @@
 import { usePostsStore } from '@/stores/posts.store'
 
 const postsStore = usePostsStore()
-const { postsCount } = storeToRefs(postsStore)
-const hasOnlyOnePost = computed(() => postsCount.value === 1)
+const { numebrOfPostsFound } = storeToRefs(postsStore)
+const hasOnlyOnePost = computed(() => numebrOfPostsFound.value === 1)
 
 const getPostsByQueryDebounced = useDebounceFn(
-  async (query: string) => {
-    await postsStore.getPostsByQuery(query)
+  async () => {
+    await postsStore.getPostsByQuery()
     postsStore.setIsLoadingPostsTo(false)
   },
   1500,
@@ -30,8 +30,9 @@ const getPostsByQueryDebounced = useDebounceFn(
 
 function handleQueryChange(event: Event) {
   const query = (event.target as HTMLInputElement).value
+  postsStore.setQuery(query)
   postsStore.setIsLoadingPostsTo(true)
-  getPostsByQueryDebounced(query)
+  getPostsByQueryDebounced()
 }
 </script>
 
