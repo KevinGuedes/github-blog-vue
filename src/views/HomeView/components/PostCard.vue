@@ -1,11 +1,14 @@
 <template>
-  <li>
+  <li @click="goToPostDetails(post.number)">
     <header>
-      <h1>{{ post.title }}</h1>
+      <h1 :title="post.title">{{ post.title }}</h1>
       <time :title="formattedCreationDate" dateTime="{post.created_at}">
         {{ creationDateRelativeToNow }}
       </time>
     </header>
+    <div>
+      <PostViewer :postBody="post.body" />
+    </div>
   </li>
 </template>
 
@@ -17,11 +20,17 @@ const props = defineProps<{
   post: Post
 }>()
 
+const router = useRouter()
+
 const createdAt = new Date(props.post.created_at)
 const formattedCreationDate = format(createdAt, "iiii, d MMMM yyyy 'at' hh:mm aa")
 const creationDateRelativeToNow = formatDistanceToNow(createdAt, {
   addSuffix: true
 })
+
+function goToPostDetails(postNumber: number) {
+  router.push({ name: 'Post Details', params: { postNumber: String(postNumber) } })
+}
 </script>
 
 <style scoped lang="scss">
@@ -67,6 +76,12 @@ li {
         text-transform: uppercase;
       }
     }
+  }
+
+  > div {
+    padding-inline: 0.25rem;
+    height: 14rem;
+    overflow: hidden;
   }
 }
 </style>

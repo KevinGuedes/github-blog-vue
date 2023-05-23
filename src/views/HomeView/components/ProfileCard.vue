@@ -1,5 +1,5 @@
 <template>
-  <DataCard class="profile-card-container" :show-background="true">
+  <DataCard class="profile-card-container">
     <img :src="profile?.avatar_url" :alt="profileImageAlt" />
     <div>
       <div>

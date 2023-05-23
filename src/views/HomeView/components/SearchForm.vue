@@ -19,9 +19,9 @@ const postsStore = usePostsStore()
 const { numebrOfPostsFound } = storeToRefs(postsStore)
 const hasOnlyOnePost = computed(() => numebrOfPostsFound.value === 1)
 
-const getPostsByQueryDebounced = useDebounceFn(
+const getPostsDebounced = useDebounceFn(
   async () => {
-    await postsStore.getPostsByQuery()
+    await postsStore.getPosts()
     postsStore.setIsLoadingPostsTo(false)
   },
   1500,
@@ -32,7 +32,7 @@ function handleQueryChange(event: Event) {
   const query = (event.target as HTMLInputElement).value
   postsStore.setQuery(query)
   postsStore.setIsLoadingPostsTo(true)
-  getPostsByQueryDebounced()
+  getPostsDebounced()
 }
 </script>
 

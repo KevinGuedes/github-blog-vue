@@ -13,10 +13,15 @@
   },
   "dependencies": {
     "@vueuse/core": "^10.1.2",
-    "@vueuse/motion": "^2.0.0-beta.12",
     "axios": "^1.4.0",
     "date-fns": "^2.30.0",
     "pinia": "^2.0.32",
+    "rehype-sanitize": "^5.0.1",
+    "rehype-stringify": "^9.0.3",
+    "remark-gfm": "^3.0.1",
+    "remark-parse": "^10.0.2",
+    "remark-rehype": "^10.1.0",
+    "unified": "^10.1.2",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6"
   },

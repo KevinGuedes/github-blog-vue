@@ -1,4 +1,3 @@
-import { MotionPlugin } from '@vueuse/motion'
 import { createPinia } from 'pinia'
 import { createApp } from 'vue'
 
@@ -9,8 +8,6 @@ import './styles/main.scss'
 
 const app = createApp(App)
 
-app.use(createPinia())
-app.use(router)
-app.use(MotionPlugin)
+app.use(createPinia()).use(router)
 
 app.mount('#app')

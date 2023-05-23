@@ -1,11 +1,13 @@
 <template>
-  <div v-if="isLoadingPosts" class="spinner-container">
-    <LoadSpinner loading-message="Loading posts..." :show-background="false" />
-  </div>
-  <NoResults v-else-if="isEmptyResult" />
-  <ul v-else>
-    <PostCard v-for="post in posts" :key="post.number" :post="post" v-motion-fade-visible-once />
-  </ul>
+  <Transition name="fade" mode="out-in">
+    <div v-if="isLoadingPosts" class="spinner-container">
+      <LoadSpinner loading-message="Loading posts..." :show-background="false" />
+    </div>
+    <NoResults v-else-if="isEmptyResult" />
+    <ul v-else>
+      <PostCard v-for="post in posts" :key="post.number" :post="post" />
+    </ul>
+  </Transition>
   <div class="page-management">
     <button :disabled="isFirstPage" @click="prev">
       <icon-ep:arrow-left-bold />
@@ -23,18 +25,20 @@ import { usePostsStore } from '@/stores/posts.store'
 const postsStore = usePostsStore()
 const { posts, isEmptyResult, isLoadingPosts, numebrOfPostsFound } = storeToRefs(postsStore)
 
-await postsStore.getPostsByQuery()
+await postsStore.getPosts()
 
-async function fetchData() {
+async function getPostsDelayed() {
   postsStore.setIsLoadingPostsTo(true)
-  await postsStore.getPostsByQuery(currentPage.value)
+  setTimeout(async () => {
+    await postsStore.getPosts(currentPage.value)
+  }, 300)
 }
 
 const { currentPage, pageCount, isFirstPage, isLastPage, prev, next } = useOffsetPagination({
   total: numebrOfPostsFound,
   page: 1,
   pageSize: postsStore.postsPerPage,
-  onPageChange: fetchData
+  onPageChange: getPostsDelayed
 })
 </script>
 
@@ -91,5 +95,15 @@ ul {
       background: $brand-blue-lighter;
     }
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

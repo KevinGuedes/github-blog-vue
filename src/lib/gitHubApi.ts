@@ -34,4 +34,9 @@ export class GitHubApi {
     const response = await gitHubApi.get<ProfileData>(`users/${user}`)
     return response.data
   }
+
+  static async getPostDetailsByPostNumber(postNumber: number): Promise<Post> {
+    const response = await gitHubApi.get<Post>(`repos/${user}/${repo}/issues/${postNumber}`)
+    return response.data
+  }
 }

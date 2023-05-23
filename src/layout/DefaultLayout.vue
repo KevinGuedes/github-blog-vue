@@ -8,19 +8,20 @@
       <RouterView v-slot="{ Component }">
         <template v-if="Component">
           <Transition name="fade" mode="out-in">
-            <KeepAlive>
-              <Suspense>
-                <Transition name="fade" mode="out-in" appear>
-                  <component :is="Component"></component>
-                </Transition>
+            <Suspense>
+              <Transition name="fade" mode="out-in" appear>
+                <component :is="Component"></component>
+              </Transition>
 
-                <template #fallback>
-                  <div class="fallback-container">
-                    <LoadSpinner loading-message="Loading GitHub data..." :show-background="true" />
-                  </div>
-                </template>
-              </Suspense>
-            </KeepAlive>
+              <template #fallback>
+                <div class="fallback-container">
+                  <LoadSpinner
+                    loading-message="Retrieving data from GitHub..."
+                    :show-background="true"
+                  />
+                </div>
+              </template>
+            </Suspense>
           </Transition>
         </template>
       </RouterView>
@@ -36,7 +37,8 @@ const errorState = ref({
 
 onErrorCaptured((err: Error) => {
   errorState.value.isError = true
-  errorState.value.errorMessage = err.message
+  console.error(err.message)
+  errorState.value.errorMessage = 'Oops, GitHub Blog went rogue! Sorry for the inconvenience.'
   return false
 })
 </script>
@@ -44,7 +46,7 @@ onErrorCaptured((err: Error) => {
 <style scoped lang="scss">
 div {
   main {
-    max-width: 864px;
+    max-width: 54rem;
     margin: -5.5rem auto 3rem;
     padding: 0 2rem;
     box-sizing: content-box;

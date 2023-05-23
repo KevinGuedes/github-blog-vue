@@ -10,11 +10,18 @@ export const usePostsStore = defineStore('posts', () => {
 
   const isEmptyResult = computed(() => posts.value.length === 0)
 
-  async function getPostsByQuery(page: number = 1) {
+  async function getPosts(page: number = 1) {
     const postsResponse = await GitHubApi.getPosts(query.value, page, postsPerPage)
     posts.value = postsResponse.posts
     numebrOfPostsFound.value = postsResponse.numebrOfPostsFound
     setIsLoadingPostsTo(false)
+  }
+
+  async function getPostDetailsByPostNumber(postNumber: number) {
+    setIsLoadingPostsTo(true)
+    const postDetails = await GitHubApi.getPostDetailsByPostNumber(postNumber)
+    setIsLoadingPostsTo(false)
+    return postDetails
   }
 
   function setIsLoadingPostsTo(value: boolean) {
@@ -32,7 +39,8 @@ export const usePostsStore = defineStore('posts', () => {
     postsPerPage,
     setQuery,
     isEmptyResult,
-    getPostsByQuery,
+    getPosts,
+    getPostDetailsByPostNumber,
     setIsLoadingPostsTo
   }
 })
